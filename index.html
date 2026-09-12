@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slazar Slytherin — Smart Fridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="room" id="room">
+    <div class="ceiling"></div>
 
+    <div class="sconce sconce-left">
+      <div class="sconce-glow"></div>
+      <div class="sconce-fixture"></div>
+    </div>
+    <div class="sconce sconce-right">
+      <div class="sconce-glow"></div>
+      <div class="sconce-fixture"></div>
+    </div>
+
+    <div class="wall">
+      <div class="tiles"></div>
+      <div class="wall-shelf">
+        <div class="jar jar-1"></div>
+        <div class="jar jar-2"></div>
+        <div class="jar jar-3"></div>
+      </div>
+    </div>
+
+    <div class="content-shell">
+      <header class="room-heading">
+        <p class="eyebrow-line"></p>
+        <h1>SLYTHERIN COMMON ROOM FRIDGE</h1>
+        <p class="sub">Smart shared refrigerator management and access-control system for secure roommate storage.</p>
+
+        <div class="status-strip">
+          <span class="status-pill online"><span class="status-dot"></span>SYSTEM ONLINE</span>
+          <span class="status-pill ready"><span class="status-dot"></span>RFID READY</span>
+          <span class="status-pill" id="doorLockStatus">FRIDGE LOCKED</span>
+        </div>
+      </header>
+
+      <section class="hero-panel">
+        <div class="fridge-stage">
+          <div class="fridge" id="fridge">
+            <div class="fridge-glow"></div>
+
+            <div class="fridge-cap">
+              <span class="brand">Medusa&nbsp;&middot;&nbsp;900</span>
+              <div class="icemaker-vent"><span></span><span></span><span></span></div>
+            </div>
+
+            <div class="cavity" id="cavity">
+              <div class="cavity-light" id="cavityLight"></div>
+
+              <div class="shelf shelf-glass" style="--y:18%">
+                <div class="item bottle bottle-tall"></div>
+                <div class="item jar-round"></div>
+                <div class="item box-carton"></div>
+              </div>
+              <div class="shelf shelf-glass" style="--y:40%">
+                <div class="item bowl"><div class="bowl-food"></div></div>
+                <div class="item wrapped-plate"></div>
+                <div class="item jar-small jar-olive"></div>
+              </div>
+
+              <div class="shelf-floor"></div>
+
+              <div class="shelf shelf-glass" style="--y:68%">
+                <div class="item produce produce-lettuce"></div>
+                <div class="item produce produce-tomato"></div>
+                <div class="item produce produce-lemon"></div>
+              </div>
+
+              <div class="container-stack" id="containerStack">
+                <div class="fridge-container container-01 locked" data-container="1">
+                  <div class="container-header">
+                    <span class="container-tag">CONTAINER 01</span>
+                    <span class="container-lock" aria-hidden="true">🔒</span>
+                  </div>
+                  <div class="container-user">ALEX</div>
+                  <div class="container-status">LOCKED</div>
+                </div>
+
+                <div class="fridge-container container-02 locked" data-container="2">
+                  <div class="container-header">
+                    <span class="container-tag">CONTAINER 02</span>
+                    <span class="container-lock" aria-hidden="true">🔒</span>
+                  </div>
+                  <div class="container-user">MIA</div>
+                  <div class="container-status">LOCKED</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="door door-top" id="doorTop" aria-expanded="false" aria-label="Open top refrigerator door">
+              <div class="door-panel">
+                <div class="door-face door-front">
+                  <div class="door-seam"></div>
+                  <div class="handle handle-top"></div>
+                </div>
+                <div class="door-face door-back">
+                  <div class="door-bin door-bin-1"><span>2%&nbsp;milk</span></div>
+                  <div class="door-bin door-bin-2"><span>condiments</span></div>
+                  <div class="door-bin door-bin-3"><span>juice</span></div>
+                </div>
+              </div>
+            </button>
+
+            <button class="door door-bottom" id="doorBottom" aria-expanded="false" aria-label="Open bottom refrigerator door">
+              <div class="door-panel">
+                <div class="door-face door-front">
+                  <div class="door-seam"></div>
+                  <div class="handle handle-bottom"></div>
+                </div>
+                <div class="door-face door-back">
+                  <div class="door-bin door-bin-1"><span>eggs</span></div>
+                  <div class="door-bin door-bin-2"><span>butter</span></div>
+                  <div class="door-bin door-bin-3"><span>pickles</span></div>
+                </div>
+              </div>
+            </button>
+
+            <button class="freezer" id="freezer" aria-expanded="false" aria-label="Open freezer drawer">
+              <div class="freezer-front">
+                <div class="handle handle-freezer"></div>
+                <span class="freezer-label">freezer</span>
+              </div>
+              <div class="freezer-inside">
+                <div class="frost"></div>
+                <div class="item ice-tray"></div>
+                <div class="item frozen-bag"></div>
+                <div class="item frozen-tub"></div>
+              </div>
+            </button>
+          </div>
+
+          <div class="reflection" id="reflection" aria-hidden="true"></div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="card status-card">
+            <div class="card-label">FRIDGE STATUS</div>
+            <div class="big-stat" id="statusDoorText">DOOR: CLOSED</div>
+            <div class="mini-meta" id="statusMeta">FRIDGE LOCKED</div>
+          </div>
+
+          
+        </aside>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="card metric-card">
+          <div class="card-label">DOOR STATUS</div>
+          <div class="metric-value" id="doorStateCard">CLOSED</div>
+          <div class="metric-note">Reed switch</div>
+        </article>
+
+        <article class="card metric-card warning-card">
+          <div class="card-label">UNNECESSARY OPENINGS</div>
+          <div class="metric-value" id="unnecessaryCount">0</div>
+          <div class="metric-note warning-text" id="warningText">MONITORING</div>
+        </article>
+
+        <article class="card metric-card">
+          <div class="card-label">ACTIVITY SENSOR</div>
+          <div class="metric-value" id="irActivityText">IDLE</div>
+          <div class="metric-note">IR SENSOR: <span id="irSensorText">IDLE</span></div>
+        </article>
+
+        <article class="card metric-card">
+          <div class="card-label">CONTAINER 01</div>
+          <div class="metric-value" id="container1Status">LOCKED</div>
+          <div class="metric-note">ALEX / ROOMMATE 01</div>
+        </article>
+
+        <article class="card metric-card">
+          <div class="card-label">CONTAINER 02</div>
+          <div class="metric-value" id="container2Status">LOCKED</div>
+          <div class="metric-note">MIA / ROOMMATE 02</div>
+        </article>
+
+        <article class="card metric-card">
+          <div class="card-label">TOTAL FRIDGE OPENS</div>
+          <div class="metric-value" id="fridgeOpens">0</div>
+          
+        </article>              
+
+      </section>
+      
+      <section class="card log-card">
+        <div class="section-header">
+          <h2>ACTIVITY LOG</h2>
+        </div>
+        <ul class="activity-log" id="activityLog"></ul>
+      </section>
+    </div>
+
+    <div class="floor"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
