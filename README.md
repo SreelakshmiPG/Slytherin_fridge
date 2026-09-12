@@ -68,16 +68,6 @@ For Hardware:
   Wi-Fi network for web connectivity
   Git/GitHub for source-code management
   Vercel for website deployment
-### Implementation
-For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
-
-### Project Documentation
-For Software:
 
 # Screenshots (Add at least 3)
 ![Screenshot1](Add screenshot 1 here with proper name)
